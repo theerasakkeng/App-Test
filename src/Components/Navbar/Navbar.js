@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-
 import {Link} from 'react-router-dom'
-
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -105,8 +103,8 @@ export default function Navbar() {
                 <Typography noWrap>EN | TH</Typography>
               </div>
               <div className={classes.menuButton}>
-                <Link to="/login"><Button variant="outlined" color="secondary">เข้าสู่ระบบ</Button></Link>
-                <Button variant="contained">สมัครสมาชิก</Button>
+                <Link style={{textDecoration:'none'}} to="/login"><Button variant="outlined" color="secondary">เข้าสู่ระบบ</Button></Link>
+                <Link style={{textDecoration:'none'}} to="/signup"><Button variant="contained">สมัครสมาชิก</Button></Link>
               </div>
             </div>
             <div className={classes.sectionMobile}>

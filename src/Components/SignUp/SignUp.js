@@ -1,30 +1,29 @@
-import React, { useState,useContext } from 'react'
-import {AuthContext} from '../Auth/Auth.js'
+import React, { useState } from 'react'
 import {Redirect} from 'react-router-dom'
 import { Grid, Paper, Avatar, TextField, Button } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import firebaseConfig from '../../config';
 
 
-export default function Login() {
+export default function SignUp() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const [currentUser, setCurrentuser] = useState(null);
 
     const handleSubmit =(e) =>{
         e.preventDefault();
-        const {email,password} = e.target.elements
+        const {email,password} = e.target.elements;
         try{
-            firebaseConfig.auth().signInWithEmailAndPassword(email.value,password.value);
+            firebaseConfig.auth().createUserWithEmailAndPassword(email.value,password.value);
+            setCurrentuser(true);
         } catch(error)
         {
             alert(error)
         }
-    }
-    const {currentUser} = useContext(AuthContext);
-    if(currentUser){
-        return <Redirect to="/home"></Redirect>
+        {if(currentUser){
+            return <Redirect to="/home" />
+        }}
     }
 
 
@@ -39,7 +38,7 @@ export default function Login() {
             <Paper elevation={10} style={paperStyle} component='form' onSubmit={handleSubmit} >
                 <Grid align="center">
                     <Avatar style={avatarStyle}><LockOutlinedIcon /></Avatar>
-                    <h2>Sing In</h2>
+                    <h2>Sing Up</h2>
                 </Grid>
                 <TextField id="email" label="Email" placeholder="Email" type="email" fullWidth required
                     value={email}
@@ -50,7 +49,7 @@ export default function Login() {
                     onChange={e => setPassword(e.target.value)}
                 />
                 {/*error && <Grid className="error">{error}</Grid>*/}
-                <Button style={buttonStyle} type="submit" color="primary" variant="contained" fullWidth >Sing In</Button>
+                <Button style={buttonStyle} type="submit" color="primary" variant="contained" fullWidth >Sing Up</Button>
             </Paper>
         </Grid>
     )
