@@ -1,29 +1,24 @@
-import Navbar from './Components/Navbar/Navbar.js'
+import Dashboard from './Components/Dashboard/Dashboard.js'
 import Login from './Components/Login/Login.js'
 import Home from './Components/Home/Home.js'
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {AuthProvider} from './Components/Auth/AuthContext.js'
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
 
 function App() {
-
-  const PrivateRoute = ({ component: Component, ...rest }) => {
-    <Route {...rest} render={props => {
-      localStorage.getItem('token') ? < Component{...props} />
-        : <Redirect to={{ pathname: "/login" }}></Redirect>
-    }}>
-
-    </Route>
-  }
+  
   return (
+    <AuthProvider>
     <Router>
       <div className="App">
         <Switch>
-          <PrivateRoute path="/home" component={Home} />
-         <Route path="/" exact component={Navbar}/>
-         <Route path="/login" component={Login}/>
+        <Route path ="/" component={Home} exact />
+        <Route path ="/login" component={Login} />
+        <Route path ="/dashboard" component={Dashboard}/>
         </Switch>
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 

@@ -105,7 +105,7 @@ export default function Navbar() {
                 <Typography noWrap>EN | TH</Typography>
               </div>
               <div className={classes.menuButton}>
-                <Link to="/login"><Button variant="outlined" color="secondary">เข้าสู่ระบบ</Button></Link>
+                <Link style={{textDecoration:'none'}} to="/login"><Button variant="outlined" color="secondary">เข้าสู่ระบบ</Button></Link>
                 <Button variant="contained">สมัครสมาชิก</Button>
               </div>
             </div>

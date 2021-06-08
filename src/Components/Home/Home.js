@@ -1,9 +1,12 @@
 import React from 'react'
+import Layout from '../Layout/Layout.js'
 
 export default function Home() {
     return (
+        <Layout>
         <div>
-            homeeee
+            Homme
         </div>
+        </Layout>
     )
 }
