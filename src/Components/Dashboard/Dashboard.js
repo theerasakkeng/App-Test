@@ -64,11 +64,7 @@ export default function Dashboard() {
         <Layout>
             
         <div style={{display:"flex",justifyContent:"center"}}>
-        <Mapview/>
-           
-        </div>
-        <div style={{textAlign:"center"}}>
-        <button onClick={handleLogout}>LogOut</button>  
+        <Mapview/>  
         </div>
         </Layout>
 
